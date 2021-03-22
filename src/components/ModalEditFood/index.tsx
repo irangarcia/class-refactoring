@@ -4,10 +4,22 @@ import { FiCheckSquare } from 'react-icons/fi';
 import { Form } from './styles';
 import { Modal } from '../Modal';
 import { Input } from '../Input';
+import { FormHandles } from '@unform/core';
 
-export function ModalEditFood(props: any) {
-  const formRef = createRef();
-  const { isOpen, setIsOpen, editingFood, handleUpdateFood } = props;
+interface ModalEditFoodProps {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  editingFood: () => void;
+  handleUpdateFood: (data: any) => void;
+}
+
+export function ModalEditFood({
+  isOpen,
+  setIsOpen,
+  editingFood,
+  handleUpdateFood,
+}: ModalEditFoodProps) {
+  const formRef = createRef<FormHandles>();
 
   const handleSubmit = async (data: any) => {
     handleUpdateFood(data);
